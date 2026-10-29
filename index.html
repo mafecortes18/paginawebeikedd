@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beiked Colombia - Repostería Artesanal</title>
+  <!-- Google Fonts: Poppins global -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --pink-bg-light: #fce4ec;
+      --pink-hero-overlay: rgba(248, 187, 208, 0.55);
+      --pink-accent: #e91e63;
+      --pink-brand: #d81b60;
+      --pink-highlight: #fec2f5;
+      --pink-cards-bg: #f8bbd0;
+      --pink-products-bg: #f48fb1;
+      --pink-footer-bg: #f8bbd0;
+      --text-dark: #333333;
+      --text-pink: #c2185b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text-dark);
+      background-color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    /* --- NAVEGACIÓN --- */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 5%;
+      background-color: #fce4ec;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .logo-container svg {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 25px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #c2185b;
+      font-weight: 600;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #880e4f;
+    }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      position: relative;
+      min-height: 520px;
+      background-image: url('https://static.bainet.es/clip/a6d5aa02-f4c6-42d9-baa7-f1f30a663a0b_4-3-aspect-ratio_1600w_1000195.webp');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(248, 187, 208, 0.55);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+    }
+
+    .hero-title {
+      color: #ffffff;
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 15px;
+      text-shadow: 1px 2px 6px rgba(0,0,0,0.25);
+    }
+
+    .hero-title .highlight {
+      color: #ffffff;
+      font-style: italic;
+      text-decoration: underline;
+      text-decoration-color: #e91e63;
+    }
+
+    .hero-description {
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: 500;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    }
+
+    .hero-btn {
+      display: inline-block;
+      background-color: #ffffff;
+      color: #d81b60;
+      padding: 12px 35px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-2px);
+      background-color: #fff5f8;
+    }
+
+    /* --- SECCIÓN NOSOTROS --- */
+    .about-section {
+      background-color: #fce4ec;
+      padding: 60px 5%;
+      text-align: center;
+    }
+
+    .section-title {
+      color: #c2185b;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+
+    .section-subtitle {
+      color: #d81b60;
+      font-size: 0.95rem;
+      font-style: italic;
+      margin-bottom: 40px;
+    }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .card {
+      background-color: #ffffff;
+      border-radius: 12px;
+      padding: 30px 25px;
+      text-align: left;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+    }
+
+    .card-title {
+      color: #c2185b;
+      font-size: 1.3rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .card p, .card ul {
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: #444;
+    }
+
+    .card ul {
+      list-style: none;
+    }
+
+    /* --- SECCIÓN PRODUCTOS --- */
+    .products-section {
+      background-color: #f48fb1;
+      padding: 60px 5%;
+      color: #ffffff;
+    }
+
+    .products-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 40px;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    }
+
+    .products-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      max-width: 1100px;
+      margin: 0 auto;
+      align-items: center;
+    }
+
+    .media-grid {
+      display: flex;
+      gap: 15px;
+      flex: 1.2;
+      min-width: 320px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .product-img-card {
+      border-radius: 12px;
+      overflow: hidden;
+      flex: 1;
+      height: 380px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    }
+
+    .product-img-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .video-card {
+      flex: 1;
+      height: 380px;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .video-card iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .flavors-info {
+      flex: 1;
+      min-width: 300px;
+      background: rgba(255, 255, 255, 0.18);
+      backdrop-filter: blur(5px);
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .flavors-title {
+      font-size: 1.8rem;
+      margin-bottom: 25px;
+      font-weight: 800;
+    }
+
+    .flavors-list-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    .flavor-column h4 {
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+      border-bottom: 1px solid rgba(255,255,255,0.4);
+      padding-bottom: 5px;
+    }
+
+    .flavor-column ul {
+      list-style: none;
+      font-size: 0.88rem;
+      line-height: 1.7;
+    }
+
+    /* --- SECCIÓN CONTACTO --- */
+    .contact-section {
+      background-color: #f8bbd0;
+      padding: 60px 5%;
+    }
+
+    .contact-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .contact-brand-col {
+      flex: 1;
+      min-width: 250px;
+      text-align: center;
+    }
+
+    .contact-main-title {
+      color: #c2185b;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo svg {
+      width: 140px;
+      height: 140px;
+    }
+
+    .contact-form-col {
+      flex: 2;
+      min-width: 300px;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
+
+    .form-header-title {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .form-row {
+      display: flex;
+      gap: 15px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .form-group {
+      flex: 1;
+      min-width: 200px;
+    }
+
+    .form-group.full {
+      flex: 100%;
+    }
+
+    label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 10px 15px;
+      border: 1px solid #fec2f5;
+      border-radius: 20px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border-color 0.2s;
+      background-color: #ffffff;
+    }
+
+    textarea {
+      border-radius: 12px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: #d81b60;
+    }
+
+    .submit-btn {
+      width: 100%;
+      background-color: #fec2f5;
+      color: #880e4f;
+      border: none;
+      padding: 12px;
+      border-radius: 25px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1px;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background-color 0.2s, transform 0.1s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .submit-btn:hover {
+      background-color: #f8bbd0;
+      transform: translateY(-1px);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { font-size: 2rem; }
+      .flavors-list-grid { grid-template-columns: 1fr; }
+      nav { flex-direction: column; gap: 15px; }
+      .media-grid { flex-direction: column; }
+      .product-img-card, .video-card { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVEGACIÓN -->
+  <nav>
+    <div class="logo-container">
+      <svg width="65" height="65" viewBox="0 0 200 200">
+        <circle cx="100" cy="100" r="100" fill="#fec2f5"/>
+        <text x="50%" y="48%" text-anchor="middle" fill="#d81b60" font-family="'Poppins', sans-serif" font-weight="900" font-size="36" font-style="italic">beiked</text>
+        <text x="50%" y="62%" text-anchor="middle" fill="#880e4f" font-family="'Poppins', sans-serif" font-weight="700" font-size="8" letter-spacing="1">BY ESTEFANIA LATTANZIO</text>
+      </svg>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#contactenos">Contáctenos</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO SECTION / INICIO -->
+  <section id="inicio" class="hero">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 class="hero-title">Un bocado de <span class="highlight">felicidad</span> en cada detalle</h1>
+      <p class="hero-description">
+        En <strong>Beike Colombia</strong> creamos experiencias dulces memorables con ingredientes seleccionados de nuestra tierra, combinando arte, amor y la más alta repostería artesanal.
+      </p>
+      <a href="#nosotros" class="hero-btn">conocer más</a>
+    </div>
+  </section>
+
+  <!-- SECCIÓN NOSOTROS -->
+  <section id="nosotros" class="about-section">
+    <h2 class="section-title">Conoce más sobre Beiked</h2>
+    <p class="section-subtitle">Los pilares que impulsan nuestra pasión por la repostería fina en Colombia.</p>
+
+    <div class="cards-grid">
+      <div class="card">
+        <h3 class="card-title">Misión</h3>
+        <p>Endulzar los momentos más especiales de las familias colombianas a través de productos de alta repostería, elaborados con pasión, creatividad e ingredientes de primera calidad.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Visión</h3>
+        <p>Ser reconocidos en Colombia como la marca referente en experiencias gastronómicas dulces y personalizadas, destacándonos por la innovación en el diseño y el sabor inconfundible.</p>
+      </div>
+
+      <div class="card">
+        <h3 class="card-title">Nuestra marca</h3>
+        <ul>
+          <li>• Ingredientes 100% colombianos.</li>
+          <li>• Diseños personalizados e innovadores.</li>
+          <li>• Compromiso con la excelencia y la frescura.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN PRODUCTOS -->
+  <section id="productos" class="products-section">
+    <h2 class="products-title">Algunos de nuestros Productos</h2>
+
+    <div class="products-container">
+      <div class="media-grid">
+        <div class="product-img-card">
+          <img src="https://scontent.fbog2-5.fna.fbcdn.net/v/t39.30808-6/539729494_1111977914463741_3161742712635594575_n.jpg?stp=dst-jpg_tt6&cstp=mx1080x1350&ctp=s1080x1350&_nc_cat=108&_nc_map=urlgen_bucketless&ccb=1-7&_nc_sid=127cfc&_nc_eui2=AeHO53C6-M78nI5RFGVszVINrDQ9ovxBAAasND2i_EEABoqri3PF6O8-RfPH8QxO1tjSvNjvGvEW_2IDGxHxY80M&_nc_ohc=sdvvEKhS1AoQ7kNvwHtTLq_&_nc_oc=Adrys6H3ydM9HOnziu84R0dk1uybEqyO9zmM1_i5mKow-hEClHIoO7XsLuEPtgjC13I&_nc_zt=23&_nc_ht=scontent.fbog2-5.fna&_nc_gid=J9I9gUTYx2G8ZN1DzZ8Icw&_nc_ss=7b2a8&oh=00_AQSZEjkvPbC_3wRexVulI-x_9YtRMV5uBoHAk1IatC1rtw&oe=6AE87466" alt="Caja de Galletas Beiked">
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.instagram.com/reel/Dd-Oi45Rdxs/embed" allowtransparency="true" allowfullscreen="true" frameborder="0" scrolling="no"></iframe>
+        </div>
+      </div>
+
+      <div class="flavors-info">
+        <h3 class="flavors-title">Conoce nuestros Sabores</h3>
+        <div class="flavors-list-grid">
+          <div class="flavor-column">
+            <h4>Sabores de línea:</h4>
+            <ul>
+              <li>- Birthday Cake</li>
+              <li>- Cinnamon Roll</li>
+              <li>- La de Milo</li>
+              <li>- Key Lime Pie</li>
+              <li>- Nutella</li>
+              <li>- Kinder & Kinder Bueno</li>
+              <li>- Classic Chocolate Chip</li>
+              <li>- Brownie Pistachio</li>
+              <li>- Klim Brigadeiro</li>
+            </ul>
+          </div>
+
+          <div class="flavor-column">
+            <h4>Sabores de temporada:</h4>
+            <ul>
+              <li>- Franuí</li>
+              <li>- Red Velvet Bomb</li>
+              <li>- Tarta Vasca x Parmesano Alpina</li>
+            </ul>
+            <p style="margin-top: 15px; font-size: 0.8rem; font-style: italic; opacity: 0.9;">
+              de la más alta calidad.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN CONTACTO -->
+  <section id="contactenos" class="contact-section">
+    <div class="contact-container">
+      <div class="contact-brand-col">
+        <h2 class="contact-main-title">Contáctenos</h2>
+        <div class="footer-logo">
+          <svg width="140" height="140" viewBox="0 0 200 200">
+            <circle cx="100" cy="100" r="100" fill="#fec2f5"/>
+            <text x="50%" y="48%" text-anchor="middle" fill="#d81b60" font-family="'Poppins', sans-serif" font-weight="900" font-size="36" font-style="italic">beiked</text>
+            <text x="50%" y="62%" text-anchor="middle" fill="#880e4f" font-family="'Poppins', sans-serif" font-weight="700" font-size="8" letter-spacing="1">BY ESTEFANIA LATTANZIO</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="contact-form-col">
+        <h3 class="form-header-title">Formulario de Contacto</h3>
+        <form id="contactForm" onsubmit="event.preventDefault(); alert('¡Gracias por tu mensaje! Te contactaremos pronto.');">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre Completo *</label>
+              <input type="text" id="nombre" placeholder="Ej. Ana Gómez" required>
+            </div>
+            <div class="form-group">
+              <label for="contacto">WhatsApp o Email *</label>
+              <input type="text" id="contacto" placeholder="Ej. 300 123 4567 o ana@email.com" required>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="motivo">Motivo de contacto</label>
+              <select id="motivo">
+                <option value="pedido">Pedido Personalizado</option>
+                <option value="evento">Evento / Boda</option>
+                <option value="info">Información General</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full">
+              <label for="mensaje">Mensaje o Detalles del Pedido *</label>
+              <textarea id="mensaje" rows="3" placeholder="Escribe tu mensaje brevemente..." required></textarea>
+            </div>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            ENVIAR MENSAJE
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
